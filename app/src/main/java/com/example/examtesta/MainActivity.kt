@@ -26,5 +26,13 @@ class MainActivity : AppCompatActivity() {
         val adapter = RecipeAdapter(this, recipeList)
         listView = binding.recipeListView
         listView.adapter = adapter
+
+        val context = this
+        listView.setOnItemClickListener{ _, _, position, _ ->
+            val selectedRecipe = recipeList[position]
+            val detailIntent = RecipeDetailActivity.newIntent(context, selectedRecipe)
+            startActivity(detailIntent)
+
+        }
     }
 }
